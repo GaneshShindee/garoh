@@ -3,20 +3,24 @@ class Stack {
     private int top;
     private int capacity;
 
+    // Constructor to initialize the stack with a given capacity
     public Stack(int capacity) {
         this.capacity = capacity;
         this.stackArray = new int[capacity];
         this.top = -1;
     }
 
+    // Check if the stack is empty
     public boolean isEmpty() {
         return top == -1;
     }
 
+    // Check if the stack is full
     public boolean isFull() {
         return top == capacity - 1;
     }
 
+    // Push an element onto the stack
     public void push(int data) {
         if (isFull()) {
             throw new IllegalStateException("Stack is full");
@@ -24,6 +28,7 @@ class Stack {
         stackArray[++top] = data;
     }
 
+    // Pop and return the top element of the stack
     public int pop() {
         if (isEmpty()) {
             throw new IllegalStateException("Stack is empty");
@@ -31,6 +36,7 @@ class Stack {
         return stackArray[top--];
     }
 
+    // Display the elements of the stack
     public void display() {
         if (isEmpty()) {
             System.out.println("Stack is empty");
