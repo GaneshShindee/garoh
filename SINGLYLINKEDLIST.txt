@@ -1,20 +1,25 @@
-public class SinglyLinkedList {
-    private class Node {
-        int data;
-        Node next;
+// Define a class representing a node in a singly linked list
+private class Node {
+    int data;
+    Node next;
 
-        public Node(int data) {
-            this.data = data;
-            this.next = null;
-        }
+    // Constructor to initialize a node with data
+    public Node(int data) {
+        this.data = data;
+        this.next = null;
     }
+}
 
+// Define a class representing a singly linked list
+public class SinglyLinkedList {
     private Node head;
 
+    // Constructor to initialize an empty linked list
     public SinglyLinkedList() {
         head = null;
     }
 
+    // Insert a new node at the beginning of the linked list
     public void insertAtBeginning(int data) {
         Node newNode = new Node(data);
         if (head == null) {
@@ -25,6 +30,7 @@ public class SinglyLinkedList {
         }
     }
 
+    // Insert a new node at the end of the linked list
     public void insertAtEnd(int data) {
         Node newNode = new Node(data);
         if (head == null) {
@@ -38,6 +44,7 @@ public class SinglyLinkedList {
         }
     }
 
+    // Display the elements of the linked list
     public void display() {
         if (head == null) {
             System.out.println("Linked list is empty.");
@@ -52,6 +59,7 @@ public class SinglyLinkedList {
         System.out.println();
     }
 
+    // Main method to demonstrate the functionality of the linked list
     public static void main(String[] args) {
         SinglyLinkedList list = new SinglyLinkedList();
         list.insertAtEnd(10);
