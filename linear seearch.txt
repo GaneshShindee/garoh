@@ -1,12 +1,29 @@
 import java.util.Scanner;
 
-public class LinearSearch {
-    public static int linearSearch(int[] arr, int key) {
-        for (int i = 0; i < arr.length; i++) {
-            if (arr[i] == key) {
-                return i;
+public class BinarySearch {
+    // Function to perform binary search on a sorted array
+    public static int binarySearch(int[] arr, int key) {
+        int low = 0;
+        int high = arr.length - 1;
+
+        // Perform binary search using a loop
+        while (low <= high) {
+            int mid = low + (high - low) / 2;
+
+            // If key is found at mid index, return the index
+            if (arr[mid] == key) {
+                return mid;
+            } 
+            // If key is greater than the middle element, search the right subarray
+            else if (arr[mid] < key) {
+                low = mid + 1;
+            } 
+            // If key is smaller than the middle element, search the left subarray
+            else {
+                high = mid - 1;
             }
         }
+
         return -1; // Key not found
     }
 
@@ -16,8 +33,10 @@ public class LinearSearch {
         System.out.print("Enter the number of elements: ");
         int n = scanner.nextInt();
 
+        // Initialize an array to store the sorted elements
         int[] arr = new int[n];
-        System.out.println("Enter the elements:");
+        
+        System.out.println("Enter the elements in sorted order:");
         for (int i = 0; i < n; i++) {
             arr[i] = scanner.nextInt();
         }
@@ -27,8 +46,10 @@ public class LinearSearch {
 
         scanner.close();
 
-        int index = linearSearch(arr, key);
+        // Perform binary search on the array
+        int index = binarySearch(arr, key);
 
+        // Display the result
         if (index != -1) {
             System.out.println("Key found at index " + index);
         } else {
@@ -36,3 +57,58 @@ public class LinearSearch {
         }
     }
 }
+
+
+
+
+
+linear search
+
+import java.util.Scanner;
+
+public class LinearSearch {
+    // Function to perform linear search on an array
+    public static int linearSearch(int[] arr, int key) {
+        // Iterate through the array to find the key
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == key) {
+                return i; // Return the index if key is found
+            }
+        }
+        return -1; // Key not found
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Input the number of elements in the array
+        System.out.print("Enter the number of elements: ");
+        int n = scanner.nextInt();
+
+        // Initialize an array to store the elements
+        int[] arr = new int[n];
+        
+        // Input the elements of the array
+        System.out.println("Enter the elements:");
+        for (int i = 0; i < n; i++) {
+            arr[i] = scanner.nextInt();
+        }
+
+        // Input the key to search for
+        System.out.print("Enter the key to search: ");
+        int key = scanner.nextInt();
+
+        scanner.close();
+
+        // Perform linear search on the array
+        int index = linearSearch(arr, key);
+
+        // Display the result
+        if (index != -1) {
+            System.out.println("Key found at index " + index);
+        } else {
+            System.out.println("Key not found in the array");
+        }
+    }
+}
+
