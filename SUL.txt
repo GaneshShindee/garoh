@@ -2,6 +2,7 @@ class Node {
     int data;
     Node next;
 
+    // Constructor to initialize a node with data
     public Node(int data) {
         this.data = data;
         this.next = null;
@@ -11,20 +12,24 @@ class Node {
 class Stack {
     private Node top;
 
+    // Constructor to initialize an empty stack
     public Stack() {
         this.top = null;
     }
 
+    // Check if the stack is empty
     public boolean isEmpty() {
         return top == null;
     }
 
+    // Push an element onto the stack
     public void push(int data) {
         Node newNode = new Node(data);
         newNode.next = top;
         top = newNode;
     }
 
+    // Pop and return the top element of the stack
     public int pop() {
         if (isEmpty()) {
             throw new IllegalStateException("Stack is empty");
@@ -34,6 +39,7 @@ class Stack {
         return data;
     }
 
+    // Display the elements of the stack
     public void display() {
         if (isEmpty()) {
             System.out.println("Stack is empty");
@@ -59,3 +65,4 @@ public class Main {
         stack.display();  // Output: 2 1
     }
 }
+
