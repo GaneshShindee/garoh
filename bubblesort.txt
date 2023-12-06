@@ -1,11 +1,18 @@
-
+// Import the Scanner class for user input
 import java.util.Scanner;
 
+// Define a class named BubbleSort
 public class BubbleSort {
+    // Define a method to perform Bubble Sort on an array
     public static void bubbleSort(int[] arr) {
+        // Get the length of the array
         int n = arr.length;
+
+        // Outer loop for the number of passes
         for (int i = 0; i < n - 1; i++) {
+            // Inner loop for each pass
             for (int j = 0; j < n - i - 1; j++) {
+                // Compare adjacent elements and swap if necessary
                 if (arr[j] > arr[j + 1]) {
                     // Swap arr[j] and arr[j+1]
                     int temp = arr[j];
@@ -16,28 +23,39 @@ public class BubbleSort {
         }
     }
 
+    // Define the main method for program execution
     public static void main(String[] args) {
+        // Create a Scanner object for user input
         Scanner scanner = new Scanner(System.in);
 
+        // Prompt the user to enter the number of elements
         System.out.print("Enter the number of elements: ");
+        // Read the user input as the number of elements
         int n = scanner.nextInt();
 
+        // Create an array to store the elements
         int[] arr = new int[n];
+        // Prompt the user to enter the elements
         System.out.println("Enter the elements:");
+        // Read the elements and store them in the array
         for (int i = 0; i < n; i++) {
             arr[i] = scanner.nextInt();
         }
 
+        // Close the Scanner to prevent resource leak
         scanner.close();
 
+        // Display the array before sorting
         System.out.println("Array before sorting:");
         for (int num : arr) {
             System.out.print(num + " ");
         }
         System.out.println();
 
+        // Call the bubbleSort method to sort the array
         bubbleSort(arr);
 
+        // Display the array after sorting
         System.out.println("Array after sorting:");
         for (int num : arr) {
             System.out.print(num + " ");
