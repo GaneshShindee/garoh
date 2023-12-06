@@ -2,6 +2,7 @@ class Node {
     int data;
     Node next;
 
+    // Constructor to initialize a node with data
     public Node(int data) {
         this.data = data;
         this.next = null;
@@ -12,15 +13,18 @@ class Queue {
     private Node front;
     private Node rear;
 
+    // Constructor to initialize an empty queue
     public Queue() {
         this.front = null;
         this.rear = null;
     }
 
+    // Check if the queue is empty
     public boolean isEmpty() {
         return front == null;
     }
 
+    // Add a new element to the rear of the queue
     public void enqueue(int data) {
         Node newNode = new Node(data);
         if (isEmpty()) {
@@ -32,6 +36,7 @@ class Queue {
         }
     }
 
+    // Remove and return the front element of the queue
     public int dequeue() {
         if (isEmpty()) {
             throw new IllegalStateException("Queue is empty");
@@ -44,6 +49,7 @@ class Queue {
         return data;
     }
 
+    // Display the elements of the queue
     public void display() {
         if (isEmpty()) {
             System.out.println("Queue is empty");
