@@ -1,0 +1,88 @@
+
+;EXP NO 6 -Stepper motor interfacing with 8051 Microcontroller and drive at stepping clockwise and 
+anticlockwise direction for 360 continuously.
+2 ;NAME - Smit Gaikwad
+3 ;ROLL NUMBER - 22210385
+4 ;BATCH - B1
+5 ;DOP - 19/03/2024
+6 
+7 ORG 0000H ; set program counter origin to 0000H
+8 L1: ; start of the main loop
+9 MOV P1,#99H ; set port 1 (P1) to 99H
+10 ACALL DELAY ; call the delay subroutine
+11 
+12 MOV P1,#88H ; set P1 to 88H
+13 ACALL DELAY ; call the delay subroutine
+14 
+15 MOV P1,#0CCH ; set P1 to 0CCH
+16 ACALL DELAY ; call the delay subroutine
+17 
+18 MOV P1,#44H ; set P1 to 44H
+19 ACALL DELAY ; call the delay subroutine
+20 
+21 MOV P1,#66H ; set P1 to 66H
+22 ACALL DELAY ; call the delay subroutine
+23 
+24 MOV P1,#22H ; set P1 to 22H
+25 ACALL DELAY ; call the delay subroutine
+26 
+27 MOV P1,#33H ; set P1 to 33H
+28 ACALL DELAY ; call the delay subroutine
+29 
+30 MOV P1,#11H ; Set P1 to 11H
+31 ACALL DELAY ; Call the delay subroutine
+32 
+33 SJMP L1 ; Jump back to L1 to repeat the loop
+34 
+35 DELAY: ; Delay subroutine
+36 MOV R3,#08H ; Load 08H into register R3 (outer loop counter)
+37 L2: ; Outer loop
+38 MOV R2,#0FFH ; Load 0FFH into register R2 (middle loop counter)
+39 L3: ; Middle loop
+40 MOV R1,#0FFH ; Load 0FFH into register R1 (inner loop counter)
+41 HERE: ; Inner loop label
+42 DJNZ R1,HERE ; Decrement R1 and jump to HERE if not zero
+43 DJNZ R2,L3 ; Decrement R2 and jump to L3 if not zero
+44 DJNZ R3,L2 ; Decrement R3 and jump to L2 if not zero
+45 RET ; Return from the subroutine
+46 END ; End of the program 
+
+
+
+6C
+
+
+;EXP NO 6 -stepper motor with 89S52 and rotate the stepper motor in half drive stepping clockwise 
+and anticlockwise direction for 360 continuously.
+2 ;NAME - SAIRAJ DEVKAR
+3 ;ROLL NUMBER - 22210187
+4 ;BATCH - B1
+5 ;DOP - 19/03/2024
+6 
+7 ORG 0000H
+8 L3: MOV R4,#48 ; Set loop counter for 48 steps (half of 360 degrees)
+9 MOV A,#33H ; Initialize accumulator A with the pattern to start the motor
+10 
+11 L1: ACALL DELAY ; Call the delay subroutine
+12 RL A ; Rotate the contents of accumulator A leftwards (clockwise half-step)
+13 MOV P1,A ; Move the rotated pattern to Port 1 to control the stepper motor
+14 DJNZ R4,L1 ; Decrement R4 and jump back to L1 if not zero, to complete the steps
+15 
+16 MOV R4,#48 ; Reset loop counter for the second half of the rotation
+17 MOV A,#33H ; Reset accumulator A with the initial pattern
+18 
+19 L2: ACALL DELAY ; Call the delay subroutine
+20 RR A ; Rotate the contents of accumulator A rightwards (counterclockwise half-step)
+21 MOV P1,A ; Move the rotated pattern to Port 1 to control the stepper motor
+22 DJNZ R4,L2 ; Decrement R4 and jump back to L2 if not zero, to complete the steps
+23 
+24 SJMP L3 ; Jump back to L3 to repeat the rotation for continuous operation
+25 
+26 DELAY: MOV R3,#08H ; Set delay loop counter for the delay subroutine
+27 L4: MOV R2,#0FFH ; Set inner loop counter for the delay subroutine
+28 L5: MOV R1,#0FFH ; Set innermost loop counter for the delay subroutine
+29 HERE: DJNZ R1,HERE ; Innermost delay loop - Decrement R1, if not zero, jump back to HERE
+30 DJNZ R2,L5 ; Inner delay loop - Decrement R2, if not zero, jump back to L5
+31 DJNZ R3,L4 ; Outer delay loop - Decrement R3, if not zero, jump back to L4
+32 RET ; Return from the delay subroutine
+33 END ; End of the program
