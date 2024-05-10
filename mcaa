@@ -1,0 +1,48 @@
+Start
+2. Load of 99H to Port
+3. Give some delay to generate the torque/inertia for windings of stepper motor
+4. Load of CCH to Port
+5. Give some delay
+6. Load of 66H to Port
+7. Give some delay
+8. Load of 33H to Port
+9. Give some delay
+10. Repeat from step 2 for continue steps
+
+6B
+1. Start
+For Anticlockwise rotation
+2. Load value 48 in register r4 as counter (48 steps for 3600)
+3. Load value 33H in Accumulator
+4. Give some delay to generate the torque/inertia for windings of stepper motor
+5. To rotate the stepper motor anticlockwise use RL
+6. Copy/Load the value of Accumulator in Port P2
+7. Decrement counter and jump if not zero to step 4
+For Clockwise rotation
+8. Load value 48 in register r4 as counter (48 steps for 3600)
+9. load value 33H in Accumulator
+10. Give some delay to generate the torque/inertia for windings of stepper motor
+11. To rotate the stepper motor clockwise use RR
+12. Copy/Load the value of Accumulator in Port P2
+13. Decrement counter and jump if not zero to step 10
+14. Repeat from step 2 for continue steps
+
+6C
+1. Start
+2. Load of 99H to Port
+3. Give some delay to generate the torque/inertia for windings of stepper motor
+4. Load of 88H to Port
+5. Give some delay
+6. Load of 0ccH to Port
+7. Give some delay
+8. Load of 44H to Port
+9. Give some delay
+10. Load of 66H to Port
+11. Give some delay
+12. Load of 22H to Port
+13. Give some delay
+14. Load of 33H to Port
+15. Give some delay
+16. Load of 11H to Port
+17. Give some delay
+18. Repeat from step 2 for continue steps
